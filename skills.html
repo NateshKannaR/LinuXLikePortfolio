@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from portfolio-rishav.pages.dev/skills by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 19 Apr 2026 09:43:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="UTF-8">
+    <title>Skills Matrix</title>
+    <link rel="stylesheet" href="css/apps.css">
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: #fff; 
+            color: #333; 
+            margin: 0; 
+            padding: 25px; 
+            box-sizing: border-box;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .header-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #005a9e 0%, #003366 100%);
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .header-icon svg { width: 28px; height: 28px; stroke-width: 2; fill: none; stroke: currentColor; }
+        
+        h1 { 
+            font-size: 24px; 
+            color: #003399; 
+            margin: 0; 
+        }
+        
+        .subtitle {
+            font-size: 13px;
+            color: #666;
+            margin-top: 2px;
+        }
+        
+        h2 { 
+            font-size: 15px; 
+            color: #444; 
+            margin-top: 20px; 
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+        }
+        
+        h2::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #eee;
+            margin-left: 15px;
+        }
+        
+        .skill-group { margin-bottom: 30px; }
+        .skill-item { display: flex; align-items: center; margin-bottom: 12px; }
+        .skill-name { width: 140px; font-weight: 600; font-size: 13px; color: #444; }
+        .skill-percent { width: 40px; font-size: 12px; font-weight: bold; color: #888; text-align: right; margin-left: 10px; }
+        
+        .skill-bar-container { 
+            flex: 1; 
+            height: 12px; 
+            background: #e9ecef; 
+            border-radius: 6px; 
+            overflow: hidden; 
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.1); 
+        }
+        
+        .skill-bar { 
+            height: 100%; 
+            width: 0; 
+            border-radius: 6px;
+            transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1); 
+        }
+        
+        /* Bar Colors */
+        .color-python { background: linear-gradient(90deg, #3776ab 0%, #5193ce 100%); }
+        .color-sql { background: linear-gradient(90deg, #00758f 0%, #0093b5 100%); }
+        .color-cpp { background: linear-gradient(90deg, #00599c 0%, #0077d1 100%); }
+        .color-web { background: linear-gradient(90deg, #e34f26 0%, #ff6b43 100%); }
+        
+        /* Badges for tools & frameworks */
+        .badges { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 8px; 
+        }
+        
+        .badge { 
+            background: #fff; 
+            border: 1px solid #c4ccda; 
+            padding: 6px 14px; 
+            border-radius: 20px; 
+            font-size: 12px; 
+            font-weight: 600; 
+            color: #003399; 
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05); 
+            transition: all 0.2s;
+            cursor: default;
+        }
+        
+        .badge:hover { 
+            background: #f0f4f9; 
+            border-color: #003399; 
+            transform: translateY(-2px); 
+            box-shadow: 0 3px 5px rgba(0,51,153,0.1);
+        }
+        
+    </style>
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/db1tiugho/image/upload/c_fill,ar_1:1,g_auto,r_max,w_64,h_64,f_png/v1772822338/147969248_ycsb1h.jpg"/>
+</head>
+<body>
+    <div class="header">
+        <div class="header-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 20V10M18 20V4M6 20v-4"/>
+            </svg>
+        </div>
+        <div>
+            <h1>Technical Skills</h1>
+            <div class="subtitle">Proficiency Matrix & Technology Stack</div>
+        </div>
+    </div>
+    
+    <div class="skill-group">
+        <h2>Core Languages</h2>
+        <div class="skill-item">
+            <div class="skill-name">Python</div>
+            <div class="skill-bar-container"><div class="skill-bar color-python" data-width="95%"></div></div>
+            <div class="skill-percent">95%</div>
+        </div>
+        <div class="skill-item">
+            <div class="skill-name">C++</div>
+            <div class="skill-bar-container"><div class="skill-bar color-cpp" data-width="85%"></div></div>
+            <div class="skill-percent">85%</div>
+        </div>
+        <div class="skill-item">
+            <div class="skill-name">SQL</div>
+            <div class="skill-bar-container"><div class="skill-bar color-sql" data-width="80%"></div></div>
+            <div class="skill-percent">80%</div>
+        </div>
+        <div class="skill-item">
+            <div class="skill-name">HTML / CSS / JS</div>
+            <div class="skill-bar-container"><div class="skill-bar color-web" data-width="97%"></div></div>
+            <div class="skill-percent">97%</div>
+        </div>
+    </div>
+
+    <div class="skill-group">
+        <h2>Frameworks & Libraries</h2>
+        <div class="badges">
+            <div class="badge">Flask</div>
+            <div class="badge">FastAPI</div>
+            <div class="badge">Streamlit</div>
+            <div class="badge">Pandas</div>
+            <div class="badge">NumPy</div>
+            <div class="badge">Selenium</div>
+            <div class="badge">BeautifulSoup</div>
+        </div>
+    </div>
+
+     <div class="skill-group">
+        <h2>Tools & Databases</h2>
+        <div class="badges">
+            <div class="badge">Git & GitHub</div>
+            <div class="badge">Docker</div>
+            <div class="badge">MongoDB</div>
+            <div class="badge">SQLite / PostgreSQL</div>
+            <div class="badge">AutoIt</div>
+            <div class="badge">Linux / WSL</div>
+        </div>
+    </div>
+    
+    <div class="skill-group">
+        <h2>Concepts & Focus Areas</h2>
+        <div class="badges">
+            <div class="badge">Data Structures & Algorithms</div>
+            <div class="badge">Object-Oriented Programming</div>
+            <div class="badge">RESTful API Design</div>
+            <div class="badge">Web Scraping & Automation</div>
+            <div class="badge">LLM Workflows</div>
+        </div>
+    </div>
+
+    <script>
+        // Animate skill bars on load
+        document.addEventListener("DOMContentLoaded", () => {
+            setTimeout(() => {
+                document.querySelectorAll('.skill-bar').forEach(bar => {
+                    bar.style.width = bar.getAttribute('data-width');
+                });
+            }, 100);
+        });
+    </script>
+</body>
+
+<!-- Mirrored from portfolio-rishav.pages.dev/skills by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 19 Apr 2026 09:43:43 GMT -->
+</html>

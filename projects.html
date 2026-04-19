@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from portfolio-rishav.pages.dev/projects by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 19 Apr 2026 09:43:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>~/projects — Natesh Kanna R</title>
+    <link rel="stylesheet" href="css/apps.css">
+    <style>
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 12px;
+            margin-top: 20px;
+        }
+        .project-card {
+            border: 1px solid rgba(0,255,65,0.2);
+            border-radius: 3px;
+            padding: 14px;
+            background: rgba(0,255,65,0.03);
+            transition: all 0.2s;
+        }
+        .project-card:hover {
+            border-color: rgba(0,255,65,0.6);
+            background: rgba(0,255,65,0.07);
+            box-shadow: 0 0 16px rgba(0,255,65,0.12);
+            transform: translateY(-2px);
+        }
+        .project-title {
+            font-weight: 700;
+            font-size: 13px;
+            margin-bottom: 5px;
+            color: #00ff41;
+            word-wrap: break-word;
+            text-shadow: 0 0 8px rgba(0,255,65,0.4);
+        }
+        .project-title::before { content: '> '; opacity: 0.5; }
+        .project-lang {
+            font-size: 11px;
+            color: rgba(0,255,65,0.5);
+            margin-bottom: 8px;
+            display: inline-block;
+            background: rgba(0,255,65,0.08);
+            padding: 2px 6px;
+            border-radius: 2px;
+            border: 1px solid rgba(0,255,65,0.15);
+        }
+        .project-desc {
+            font-size: 11px;
+            color: rgba(0,255,65,0.65);
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        .project-link {
+            font-size: 11px;
+            display: inline-flex;
+            align-items: center;
+            color: rgba(0,255,65,0.7);
+            border-bottom: 1px solid rgba(0,255,65,0.2);
+            letter-spacing: 0.04em;
+        }
+        .project-link:hover { color: #00ff41; border-bottom-color: #00ff41; }
+        .project-link svg { width: 12px; height: 12px; margin-right: 4px; }
+        @media (max-width: 720px) {
+            .projects-grid { grid-template-columns: 1fr; gap: 10px; }
+        }
+    </style>
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/db1tiugho/image/upload/c_fill,ar_1:1,g_auto,r_max,w_64,h_64,f_png/v1772822338/147969248_ycsb1h.jpg"/>
+</head>
+<body>
+    <div class="container">
+        <h1>~/projects</h1>
+        <p style="color:rgba(0,255,65,0.6);font-size:12px;">natesh@portfolio:~/projects$ ls -la | grep repo</p>
+        
+        <div class="projects-grid" id="projects-container">
+            <!-- Populated via JS -->
+        </div>
+    </div>
+
+    <script>
+        const projects = [
+            { name: "Ai1", lang: "Python", desc: "An experimental artificial intelligence application focused on natural language processing techniques and text-based utilities." },
+            { name: "Apk", lang: "Java, Kotlin", desc: "A collection of compiled Android application packages demonstrating mobile development workflows." },
+            { name: "App-Hiding-Android-App", lang: "Java", desc: "A secure utility application built for the Android platform that allows users to discreetly hide and protect sensitive apps." },
+            { name: "aris", lang: "Python", desc: "A personal task automation and scripting suite built to securely streamline daily repetitive OS-level operations." },
+            { name: "ASCII-Video-Player", lang: "Python, JavaScript", desc: "A creative conversion tool that transforms standard video files into dynamic, real-time ASCII art animations in the browser." },
+            { name: "Biriyani-Plaza", lang: "HTML, CSS, JavaScript", desc: "A responsive, modern restaurant website frontend featuring an elegant user interface for exploring menus and services." },
+            { name: "Custom_launcher", lang: "Java, Kotlin", desc: "A highly customizable Android home screen replacement offering enhanced organization and personalization features." },
+            { name: "Dandelions", lang: "HTML, CSS, JavaScript", desc: "An interactive, visually calming web experience utilizing sophisticated CSS animations to simulate drifting dandelion seeds." },
+            { name: "Do-you-love-me-", lang: "HTML, CSS, JS", desc: "An interactive, playful web interface featuring dynamic hover events, responsive animations, and responsive DOM manipulation." },
+            { name: "Download-HR-PROB", lang: "Python", desc: "A utility script engineered to automate the downloading and file management of organizational human resources documents." },
+            { name: "Drowsiness-Detector", lang: "Python, OpenCV", desc: "A computer vision application that leverages facial landmarks and eye aspect ratio to alert drivers to signs of fatigue." },
+            { name: "Face-Expression-Analyzer", lang: "Python, TensorFlow", desc: "A machine learning project that detects and categorizes human facial expressions in real-time video streams." },
+            { name: "Face-Expression-Analyzer-3ab77", lang: "Python, PyTorch", desc: "An optimized iteration of the facial expression analyzer utilizing improved model weights for higher accuracy." },
+            { name: "Fitness-App", lang: "React Native", desc: "A comprehensive health and wellness mobile application offering activity tracking, personalized routines, and progress visualization." },
+            { name: "Food-Analysis-Prototype", lang: "Python, Machine Learning", desc: "An experimental computer vision model designed to classify and analyze nutritional information from meal images." },
+            { name: "GPT-UI", lang: "React, TypeScript", desc: "A sleek, responsive user interface clone designed to facilitate interactions with generative AI APIs and backend chat models." },
+            { name: "Handdetector", lang: "Python, MediaPipe", desc: "A real-time hand tracking and spatial gesture recognition system built utilizing advanced computer vision pipelines." },
+            { name: "Handdetector-c2ddb", lang: "Python", desc: "An enhanced version of the hand detection tool featuring additional gesture mapping capabilities and coordinate smoothing." },
+            { name: "HappyNewYear", lang: "HTML, CSS, JS", desc: "A celebratory web experience featuring particle fireworks animations, synchronized audio, and countdown timers." },
+            { name: "Hr-app", lang: "Flutter, Dart", desc: "A cross-platform mobile application built to streamline human resources operations and employee communication." },
+            { name: "hr-gpt", lang: "Python, LangChain", desc: "A specialized conversational agent tailored via RAG to accurately resolve common employee inquiries regarding company policies." },
+            { name: "HR-GPT-MAIN", lang: "Python, Next.js", desc: "A specialized conversational AI assistant seamlessly integrated into human resources workflows for automated query resolution." },
+            { name: "Hr-Manager", lang: "React, Node.js", desc: "A comprehensive enterprise dashboard for managing employee records, tracking attendance, and streamlining internal HR processes." },
+            { name: "iit_dholakput", lang: "HTML, CSS", desc: "A humorous and nostalgic frontend web project deeply themed around popular Indian animated folklore and pop culture." },
+            { name: "Jujutsu-Kaisen", lang: "HTML, CSS, JS", desc: "A highly dynamic anime-themed landing page focusing on advanced CSS animations and interactive scroll effects." },
+            { name: "Link-Ris", lang: "JavaScript", desc: "A responsive, modern web dashboard for securely aggregating and categorizing personal and professional web links." },
+            { name: "Link-Shortner", lang: "Node.js, Express", desc: "A scalable backend microservice providing fast URL shortening, redirection handles, and basic click tracking analytics." },
+            { name: "Liquify-Architect-v1.0", lang: "WebGL, JavaScript", desc: "A creative web tool that allows designers to apply real-time, fluid- dynamics distortions to uploaded image files." },
+            { name: "Live-Vulnerability-Map", lang: "React, WebGL", desc: "A geographic visualization mapping dashboard that tracks simulated global cybersecurity events and threats." },
+            { name: "LiveEarthSimulator", lang: "Three.js", desc: "An immersive 3D simulation of Earth featuring real-time atmospheric scattering, textures, and lighting effects." },
+            { name: "LiveEarthSimulator-49227", lang: "Three.js", desc: "A polished update of the Earth simulator implementing rendering optimizations tailored for mobile device performance." },
+            { name: "Monthlycal", lang: "TypeScript", desc: "A lightweight, highly customizable calendar component library for scheduling events and managing daily activities." },
+            { name: "Mouse-Control---LINUX", lang: "Python", desc: "A Linux-specific system administration tool that enables secure remote mouse and keyboard input control." },
+            { name: "NewSabitaProtishthan", lang: "HTML, CSS", desc: "A complete front-end redesign for a nonprofit organization, prioritizing accessibility, responsiveness, and modern UX." },
+            { name: "NewYearBtw", lang: "JavaScript", desc: "An animated holiday-themed web app utilizing canvas rendering to display vibrant, procedural celebratory graphics." },
+            { name: "Notyourtemplate", lang: "HTML, SCSS", desc: "A collection of modern, responsive HTML website templates crafted strictly from scratch without external frameworks." },
+            { name: "OutAmigos", lang: "React Native", desc: "A social mobile application conceptually designed to help users plan group outings and coordinate schedules." },
+            { name: "Pay-Page-for-Editor", lang: "React, Stripe", desc: "A secure e-commerce frontend interface and backend integration built to facilitate payment processing flows." },
+            { name: "PDF-CheatSheet", lang: "HTML, CSS", desc: "A digital reference repository featuring cleanly formatted, downloadable PDF summaries for various technical subjects." },
+            { name: "Photos", lang: "JavaScript, React", desc: "An elegant, responsive image gallery web application focusing on lazy loading, fluid transitions, and masonry layout." },
+            { name: "Repository-Counter", lang: "JavaScript", desc: "A lightweight programmatic tool that interfaces with the GitHub API to statically count and categorize user repositories." },
+            { name: "rishwebb", lang: "React, CSS", desc: "The core source repository for an interactive, modern personal portfolio showcasing professional web development projects." },
+            { name: "Saas-Landing-", lang: "Next.js, Tailwind", desc: "A high-conversion marketing landing page template designed specifically for modern Software as a Service products." },
+            { name: "store-v2.0", lang: "Node.js, React", desc: "A full-scale e-commerce application implementation featuring robust product browsing, cart state management, and clear checkout flows." },
+            { name: "Study-Pdf-Maker", lang: "Python", desc: "An automated document generation script that compiles structured markdown or text notes into well-formatted study PDFs." },
+            { name: "Sub-to-Unlock-LTD", lang: "Node.js", desc: "A marketing utility platform that requires continuous user subscription verification to grant access to digital resources." },
+            { name: "Sub-to-Unlock-LTD-8f561", lang: "Node.js", desc: "An updated core release of the subscription-wall service featuring reinforced session security and dashboard analytics." },
+            { name: "Sun-Live", lang: "JavaScript, APIs", desc: "A space visualization dashboard tracking real-time solar activity and space weather by interfacing with public APIs." },
+            { name: "Text-to-Voice", lang: "JavaScript", desc: "An accessibility-focused web application that utilizes the Web Speech API to convert text input into synthesized speech." },
+            { name: "ValentineCard", lang: "HTML, CSS", desc: "A beautifully animated, interactive digital greeting card complete with CSS envelope transitions and typography." },
+            { name: "Voice-Cloner", lang: "Python, PyTorch", desc: "An experimental machine learning tool utilizing deep learning architectures to synthesize realistic audio voice models." },
+            { name: "VolexScratch", lang: "JavaScript", desc: "A modular, educational visual programming environment where users assemble algorithmic logic using drag-and-drop blocks." },
+            { name: "VolexScratch_Advance", lang: "TypeScript", desc: "An advanced tier of the block-coding platform handling complex logic routing, data structures, and conditional flows." },
+            { name: "VolexScratch_Advance-29f86", lang: "TypeScript", desc: "A specialized build introducing integration capabilities that allow visual block logic to interface with external web APIs." },
+            { name: "VolexScratch-f9e5a", lang: "JavaScript", desc: "A developmental build of the visual programming platform featuring extensive bug fixes and expanded block libraries." },
+            { name: "Vulnerability-Scan-V2.0", lang: "Python, Bash", desc: "An automated cybersecurity scripting tool designed to systematically assess and report vulnerabilities in targeted web servers." },
+            { name: "Whatsapp-Link-Sender", lang: "JavaScript", desc: "A browser-side productivity tool designed to automatically compile and generate targeted API messaging links for seamless communication." },
+            { name: "Whatsapp-message-V2.0", lang: "Python", desc: "An upgraded messaging automation framework utilizing advanced browser control to schedule and bulk-send targeted communications." },
+            { name: "Whatsapp-Status-Apk", lang: "Java, Android", desc: "An Android application engineered to seamlessly save, manage, and interact with temporary social media status updates." },
+            { name: "Workout-AURA", lang: "React Native", desc: "A comprehensive fitness tracking mobile companion app offering routine generation, progress metrics, and workout logging." },
+            { name: "Youtube-Downloader", lang: "Python", desc: "A command-line script utilizing `yt-dlp` functionality to facilitate the rapid, high-resolution downloading of video content." },
+            { name: "Youtube-Videos-Downloader", lang: "Python", desc: "An expanded media utility introducing batch processing and playlist parsing logic for automated content archival." }
+        ];
+
+        const container = document.getElementById('projects-container');
+
+        projects.forEach(proj => {
+            const card = document.createElement('div');
+            card.className = 'project-card';
+            
+            card.innerHTML = `
+                <div class="project-title">${proj.name.replace(/-/g, ' ')}</div>
+                <div class="project-lang">${proj.lang}</div>
+                <div class="project-desc">${proj.desc}</div>
+                <a href="https://github.com/natesh-kanna/${proj.name}" target="_blank" rel="noopener noreferrer" class="project-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    View on GitHub
+                </a>
+            `;
+            container.appendChild(card);
+        });
+    </script>
+</body>
+
+<!-- Mirrored from portfolio-rishav.pages.dev/projects by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 19 Apr 2026 09:43:43 GMT -->
+</html>

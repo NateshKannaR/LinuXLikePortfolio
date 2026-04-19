@@ -1,0 +1,56 @@
+/* Hacker theme for iframe apps */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&display=swap');
+
+:root {
+    --green: #00ff41;
+    --green-dim: #00cc33;
+    --border-green: rgba(0,255,65,0.3);
+    --bg: #050f05;
+    --font: "JetBrains Mono", "Fira Code", "Courier New", monospace;
+}
+
+body {
+    background: var(--bg);
+    color: var(--green);
+    font-family: var(--font);
+    padding: 20px;
+    margin: 0;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-green) transparent;
+}
+
+h1, h2, h3 {
+    color: var(--green);
+    margin-top: 0;
+    letter-spacing: 0.08em;
+    text-shadow: 0 0 12px rgba(0,255,65,0.4);
+}
+
+h1::before { content: '# '; opacity: 0.5; }
+h2::before { content: '## '; opacity: 0.5; }
+
+a {
+    color: var(--green-dim);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border-green);
+    transition: all 0.2s;
+}
+
+a:hover {
+    color: var(--green);
+    text-shadow: 0 0 8px rgba(0,255,65,0.5);
+    border-bottom-color: var(--green);
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+p { color: rgba(0,255,65,0.8); line-height: 1.7; }
+
+@media (max-width: 640px) {
+    body { padding: 12px; }
+    .container { max-width: none; }
+}
