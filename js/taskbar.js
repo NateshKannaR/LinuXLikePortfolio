@@ -70,27 +70,13 @@ const TaskBar = {
         if (clockBtn && clockWidget) {
             clockBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
-                
-                // Hide Start Menu if open
                 const startMenu = document.getElementById('start-menu');
-                if (startMenu && startMenu.style.display !== 'none') {
-                    TaskBar.toggleStartMenu(false);
-                }
-
-                if (clockWidget.style.display === 'none') {
-                    clockWidget.style.display = 'flex';
-                    TaskBar.updateClock();
-                    TaskBar.renderCalendar();
-                } else {
-                    clockWidget.style.display = 'none';
-                }
+                if (startMenu && startMenu.style.display !== 'none') TaskBar.toggleStartMenu(false);
+                clockWidget.style.display = clockWidget.style.display === 'none' ? 'flex' : 'none';
+                if (clockWidget.style.display === 'flex') { TaskBar.updateClock(); TaskBar.renderCalendar(); }
             });
-
-            // Close widget when clicking outside
             document.addEventListener('click', (e) => {
-                if (!clockWidget.contains(e.target) && e.target !== clockBtn) {
-                    clockWidget.style.display = 'none';
-                }
+                if (!clockWidget.contains(e.target) && e.target !== clockBtn) clockWidget.style.display = 'none';
             });
         }
 

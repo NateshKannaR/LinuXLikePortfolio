@@ -10,187 +10,458 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="prefetch" href="css/apps.css" as="style">
-    <link rel="prefetch" href="computer.html" as="document">
     <link rel="prefetch" href="projects.html" as="document">
     <link rel="prefetch" href="resume.html" as="document">
     <link rel="prefetch" href="skills.html" as="document">
     <link rel="prefetch" href="terminal.html" as="document">
-    <link rel="prefetch" href="calculator.html" as="document">
-    <link rel="prefetch" href="notepad.html" as="document">
-    <link rel="prefetch" href="paint.html" as="document">
-    <link rel="prefetch" href="taskmanager.html" as="document">
     <link rel="prefetch" href="contact.html" as="document">
-    <link rel="prefetch" href="recycle.html" as="document">
 </head>
 <body>
-    <!-- Login Screen -->
-    <div id="login-screen">
-        <canvas id="matrix-canvas"></canvas>
-        <div class="login-vignette"></div>
 
-        <div class="lock-time-block" aria-live="polite">
-            <div id="lock-time">00:00</div>
-            <div id="lock-date">Monday, January 01</div>
-        </div>
+<!-- ═══════════════ LOGIN SCREEN ═══════════════ -->
+<div id="login-screen">
+    <canvas id="matrix-canvas"></canvas>
+    <div class="login-vignette"></div>
 
-        <div class="login-center">
-            <div class="login-profile-w11">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="w11-user-icon">
-                    <circle cx="12" cy="8" r="4.1"></circle>
-                    <path d="M6.5 19.2c0-3.18 2.75-5.2 5.5-5.2s5.5 2.02 5.5 5.2"></path>
-                </svg>
-            </div>
-            <div id="login-selected-user" class="login-name-w11">natesh</div>
-            <button id="btn-login" class="login-btn-w11">[ AUTHENTICATE ]</button>
-        </div>
-
-        <div class="login-bottom-left">
-            <div class="w11-user-list-item active" data-user="natesh" role="button" tabindex="0" aria-pressed="true">
-                <div class="w11-small-pic default-icon">
-                    <svg viewBox="0 0 24 24" fill="#00ff41" stroke="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
-                </div>
-                <span>natesh</span>
-            </div>
-            <div class="w11-user-list-item" data-user="root" role="button" tabindex="0" aria-pressed="false">
-                <div class="w11-small-pic default-icon">
-                    <svg viewBox="0 0 24 24" fill="#00ff41" stroke="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
-                </div>
-                <span>root</span>
-            </div>
-        </div>
-
-        <div class="login-bottom-right" role="group" aria-label="Quick options">
-            <button type="button" class="lock-icon-btn" data-action="accessibility" aria-label="Toggle accessibility mode" aria-pressed="false">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2"></circle><path d="M5 9h14"></path><path d="M12 9v11"></path><path d="m8 20 4-6 4 6"></path></svg>
-            </button>
-            <button type="button" class="lock-icon-btn" data-action="theme" aria-label="Switch background style" aria-pressed="false">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
-            </button>
-            <button type="button" class="lock-icon-btn" data-action="restart" aria-label="Restart login screen">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path><line x1="12" y1="2" x2="12" y2="12"></line></svg>
-            </button>
-        </div>
-        <div id="login-action-toast" class="login-action-toast" aria-live="polite"></div>
+    <div class="lock-time-block" aria-live="polite">
+        <div id="lock-time">00:00</div>
+        <div id="lock-date">Monday, January 01</div>
     </div>
 
-    <!-- System Audio -->
-    <audio id="audio-startup" preload="auto" src="https://www.myinstants.com/media/sounds/windows-7-startup-sound.mp3"></audio>
-    <audio id="audio-shutdown" preload="auto" src="assets/audio/shutdown.mp3"></audio>
-    <audio id="audio-restart" preload="auto" src="https://www.myinstants.com/media/sounds/windows-restart.mp3"></audio>
+    <div class="login-center">
+        <div class="login-profile-w11">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="w11-user-icon">
+                <circle cx="12" cy="8" r="4.1"></circle>
+                <path d="M6.5 19.2c0-3.18 2.75-5.2 5.5-5.2s5.5 2.02 5.5 5.2"></path>
+            </svg>
+        </div>
+        <div id="login-selected-user" class="login-name-w11">natesh</div>
+        <button id="btn-login" class="login-btn-w11">[ AUTHENTICATE ]</button>
+    </div>
 
-    <!-- Main Desktop -->
-    <div id="desktop-environment" style="display: none;">
-        <div id="desktop-grid"></div>
-        <div id="window-container"></div>
-
-        <!-- Start Menu -->
-        <div id="start-menu" class="aero-glass" style="display: none;">
-            <div class="start-menu-left">
-                <div id="start-programs-list"></div>
-                <div class="start-search">
-                    <input type="text" id="start-search-input" placeholder="$ search...">
-                </div>
+    <div class="login-bottom-left">
+        <div class="w11-user-list-item active" data-user="natesh" role="button" tabindex="0" aria-pressed="true">
+            <div class="w11-small-pic default-icon">
+                <svg viewBox="0 0 24 24" fill="#00ff41" stroke="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
             </div>
-            <div class="start-menu-right">
-                <div class="user-profile">
-                    <img src="https://ui-avatars.com/api/?name=Natesh+Kanna&background=003b0f&color=00ff41&bold=true" alt="Natesh Kanna R" class="user-avatar">
-                    <span class="user-name">natesh@portfolio</span>
-                </div>
-                <ul class="start-menu-links">
-                    <li data-app="about">whoami</li>
-                    <li data-app="taskmanager">htop</li>
-                    <li data-app="projects">~/projects</li>
-                    <li data-app="resume">resume.pdf</li>
-                    <li data-app="terminal">terminal</li>
-                    <li data-app="contact">contact</li>
-                    <li data-app="github">github</li>
-                    <li class="separator"></li>
-                    <li id="shutdown-btn">poweroff</li>
-                </ul>
+            <span>natesh</span>
+        </div>
+        <div class="w11-user-list-item" data-user="root" role="button" tabindex="0" aria-pressed="false">
+            <div class="w11-small-pic default-icon">
+                <svg viewBox="0 0 24 24" fill="#00ff41" stroke="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+            </div>
+            <span>root</span>
+        </div>
+    </div>
+
+    <div class="login-bottom-right" role="group">
+        <button type="button" class="lock-icon-btn" data-action="accessibility" aria-label="Accessibility" aria-pressed="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2"></circle><path d="M5 9h14"></path><path d="M12 9v11"></path><path d="m8 20 4-6 4 6"></path></svg>
+        </button>
+        <button type="button" class="lock-icon-btn" data-action="theme" aria-label="Theme" aria-pressed="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2m-7.07-14.07 1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2m-4.34-7.07-1.41 1.41M6.34 17.66l-1.41 1.41"></path></svg>
+        </button>
+        <button type="button" class="lock-icon-btn" data-action="restart" aria-label="Restart">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path><line x1="12" y1="2" x2="12" y2="12"></line></svg>
+        </button>
+    </div>
+    <div id="login-action-toast" class="login-action-toast" aria-live="polite"></div>
+</div>
+
+<!-- ═══════════════ AUDIO ═══════════════ -->
+<audio id="audio-startup" preload="auto" src="https://www.myinstants.com/media/sounds/windows-7-startup-sound.mp3"></audio>
+<audio id="audio-shutdown" preload="auto" src="assets/audio/shutdown.mp3"></audio>
+<audio id="audio-restart" preload="auto" src="https://www.myinstants.com/media/sounds/windows-restart.mp3"></audio>
+
+<!-- ═══════════════ DESKTOP ═══════════════ -->
+<div id="desktop-environment" style="display:none;">
+
+    <!-- Animated canvas wallpaper -->
+    <canvas id="desktop-canvas"></canvas>
+
+    <!-- Arch-style polybar (top) -->
+    <div id="polybar">
+        <div class="polybar-left">
+            <span class="polybar-logo">⬡ Arch</span>
+            <div class="polybar-ws">
+                <div class="ws-dot active" title="ws1"></div>
+                <div class="ws-dot" title="ws2"></div>
+                <div class="ws-dot" title="ws3"></div>
+                <div class="ws-dot" title="ws4"></div>
+            </div>
+            <span class="polybar-tag">
+                <span class="active-app" id="polybar-active-app">~</span>
+            </span>
+        </div>
+        <div class="polybar-center">
+            <span id="polybar-clock">00:00:00</span>
+        </div>
+        <div class="polybar-right">
+            <div class="polybar-stat">
+                <span class="icon">CPU</span>
+                <div class="bar"><div class="bar-fill" id="cpu-bar" style="width:42%"></div></div>
+                <span id="cpu-val">42%</span>
+            </div>
+            <div class="polybar-stat">
+                <span class="icon">MEM</span>
+                <div class="bar"><div class="bar-fill" id="mem-bar" style="width:61%"></div></div>
+                <span id="mem-val">61%</span>
+            </div>
+            <div class="polybar-stat">
+                <span class="icon">↑↓</span>
+                <span id="net-val">1.2MB/s</span>
             </div>
         </div>
+    </div>
 
-        <!-- Taskbar -->
-        <div id="taskbar">
+    <!-- Conky-style info widget (top-right) -->
+    <div id="desktop-info">
+        <div class="info-line"><span class="key">OS</span><span class="val">NateshOS x86_64</span></div>
+        <div class="info-line"><span class="key">WM</span><span class="val">i3-gaps</span></div>
+        <div class="info-line"><span class="key">Shell</span><span class="val">zsh 5.9</span></div>
+        <div class="info-line"><span class="key">Term</span><span class="val">kitty</span></div>
+        <div class="info-line"><span class="key">Uptime</span><span class="val" id="uptime-val">0h 0m</span></div>
+        <div class="info-line"><span class="key">Pkgs</span><span class="val">1337 (pacman)</span></div>
+    </div>
+
+    <!-- Desktop icons grid -->
+    <div id="desktop-grid"></div>
+
+    <!-- Windows -->
+    <div id="window-container"></div>
+
+    <!-- Start / App Menu -->
+    <div id="start-menu" class="aero-glass" style="display:none;">
+        <div class="start-menu-left">
+            <div id="start-programs-list"></div>
+            <div class="start-search">
+                <input type="text" id="start-search-input" placeholder="$ search...">
+            </div>
+        </div>
+        <div class="start-menu-right">
+            <div class="user-profile">
+                <img src="https://ui-avatars.com/api/?name=Natesh+Kanna&background=003b0f&color=00ff41&bold=true" alt="Natesh Kanna R" class="user-avatar">
+                <div>
+                    <div class="user-name">natesh</div>
+                    <div style="font-size:9px;color:rgba(0,255,65,0.45);letter-spacing:0.06em;font-family:var(--font-family);">@portfolio</div>
+                </div>
+            </div>
+            <ul class="start-menu-links">
+                <li data-app="about">whoami</li>
+                <li data-app="taskmanager">htop</li>
+                <li data-app="projects">~/projects</li>
+                <li data-app="resume">resume.pdf</li>
+                <li data-app="terminal">terminal</li>
+                <li data-app="contact">contact</li>
+                <li data-app="github">github</li>
+                <li class="separator"></li>
+                <li id="shutdown-btn">poweroff</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Bottom dock (replaces old taskbar) -->
+    <div id="dock">
+        <!-- Start button + open windows -->
+        <div class="dock-left">
             <div id="start-button">
-                <div class="windows-logo-small">~$</div>
+                <div class="windows-logo-small">⬡</div>
             </div>
             <div id="taskbar-items"></div>
+        </div>
+
+        <!-- Pinned dock icons -->
+        <div class="dock-center" id="dock-pins"></div>
+
+        <!-- System tray -->
+        <div class="dock-right">
             <div id="system-tray">
                 <div id="clock">00:00</div>
                 <div id="show-desktop"></div>
             </div>
         </div>
-
-        <!-- Context Menu -->
-        <div id="desktop-context-menu" class="context-menu aero-glass" style="display: none;"></div>
     </div>
 
-    <!-- Clock Widget -->
-    <div id="clock-widget" class="aero-glass" style="display: none;">
-        <div class="clock-widget-container">
-            <div class="analog-clock">
-                <div class="clock-face">
-                    <div class="hand hour-hand" id="hour-hand"></div>
-                    <div class="hand min-hand" id="min-hand"></div>
-                    <div class="hand second-hand" id="sec-hand"></div>
-                    <div class="center-dot"></div>
-                </div>
-                <div class="digital-time" id="digital-clock-display">00:00:00</div>
+    <!-- Context Menu -->
+    <div id="desktop-context-menu" class="context-menu aero-glass" style="display:none;"></div>
+</div>
+
+<!-- Clock Widget -->
+<div id="clock-widget" class="aero-glass" style="display:none;">
+    <div class="clock-widget-container">
+        <div class="analog-clock">
+            <div class="clock-face">
+                <div class="hand hour-hand" id="hour-hand"></div>
+                <div class="hand min-hand" id="min-hand"></div>
+                <div class="hand second-hand" id="sec-hand"></div>
+                <div class="center-dot"></div>
             </div>
-            <div class="calendar-section">
-                <div class="calendar-header" id="calendar-header">January 2026</div>
-                <div class="calendar-grid">
-                    <div class="day-name">Su</div><div class="day-name">Mo</div><div class="day-name">Tu</div>
-                    <div class="day-name">We</div><div class="day-name">Th</div><div class="day-name">Fr</div><div class="day-name">Sa</div>
-                </div>
-                <div class="current-date-footer" id="current-date-footer">Monday, January 01, 2026</div>
+            <div class="digital-time" id="digital-clock-display">00:00:00</div>
+        </div>
+        <div class="calendar-section">
+            <div class="calendar-header" id="calendar-header">January 2026</div>
+            <div class="calendar-grid">
+                <div class="day-name">Su</div><div class="day-name">Mo</div><div class="day-name">Tu</div>
+                <div class="day-name">We</div><div class="day-name">Th</div><div class="day-name">Fr</div><div class="day-name">Sa</div>
             </div>
+            <div class="current-date-footer" id="current-date-footer">Monday, January 01, 2026</div>
         </div>
     </div>
+</div>
 
-    <!-- Shutdown Screen -->
-    <div id="shutdown-screen" style="display: none;">
-        <div class="shutdown-content">
-            <div class="spinner"></div>
-            <h1>Shutting down...</h1>
-        </div>
+<!-- Shutdown Screen -->
+<div id="shutdown-screen" style="display:none;">
+    <div class="shutdown-content">
+        <div class="spinner"></div>
+        <h1>Shutting down...</h1>
     </div>
+</div>
 
-    <!-- Matrix Rain -->
-    <script>
-    (function(){
-        const canvas = document.getElementById('matrix-canvas');
-        if (!canvas) return;
-        const ctx = canvas.getContext('2d');
-        function resize() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            drops = Array(Math.floor(canvas.width / 14)).fill(1);
+<script>
+/* ── Matrix rain on login ── */
+(function(){
+    const canvas = document.getElementById('matrix-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let drops = [];
+    function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        drops = Array(Math.floor(canvas.width / 14)).fill(1);
+    }
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*<>/\\|{}[]ｦｧｨｩｪｫｬｭｮｯｰｱｲｳｴｵ';
+    resize();
+    window.addEventListener('resize', resize);
+    function draw() {
+        ctx.fillStyle = 'rgba(0,0,0,0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.font = '13px monospace';
+        drops.forEach((y, i) => {
+            ctx.fillStyle = Math.random() > 0.97 ? '#fff' : '#00ff41';
+            ctx.fillText(chars[Math.floor(Math.random() * chars.length)], i * 14, y * 14);
+            if (y * 14 > canvas.height && Math.random() > 0.975) drops[i] = 0;
+            drops[i]++;
+        });
+    }
+    setInterval(draw, 50);
+})();
+
+/* ── Animated desktop canvas wallpaper ── */
+function initDesktopCanvas() {
+    const canvas = document.getElementById('desktop-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let W, H, particles = [], lines = [];
+    const PARTICLE_COUNT = 80;
+
+    function resize() {
+        W = canvas.width = window.innerWidth;
+        H = canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+        particles.push({
+            x: Math.random() * window.innerWidth,
+            y: Math.random() * window.innerHeight,
+            vx: (Math.random() - 0.5) * 0.4,
+            vy: (Math.random() - 0.5) * 0.4,
+            r: Math.random() * 1.5 + 0.5,
+            alpha: Math.random() * 0.5 + 0.1
+        });
+    }
+
+    let t = 0;
+    function draw() {
+        t++;
+        ctx.clearRect(0, 0, W, H);
+
+        /* deep dark bg */
+        ctx.fillStyle = '#020a02';
+        ctx.fillRect(0, 0, W, H);
+
+        /* subtle grid */
+        ctx.strokeStyle = 'rgba(0,255,65,0.03)';
+        ctx.lineWidth = 1;
+        const gs = 60;
+        for (let x = 0; x < W; x += gs) {
+            ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
         }
-        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*<>/\\|{}[]';
-        let drops = [];
-        resize();
-        window.addEventListener('resize', resize);
-        function draw() {
-            ctx.fillStyle = 'rgba(0,0,0,0.05)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.font = '13px monospace';
-            drops.forEach((y, i) => {
-                const bright = Math.random() > 0.95;
-                ctx.fillStyle = bright ? '#ffffff' : '#00ff41';
-                ctx.fillText(chars[Math.floor(Math.random() * chars.length)], i * 14, y * 14);
-                if (y * 14 > canvas.height && Math.random() > 0.975) drops[i] = 0;
-                drops[i]++;
+        for (let y = 0; y < H; y += gs) {
+            ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
+        }
+
+        /* glowing horizon line */
+        const grad = ctx.createLinearGradient(0, H * 0.55, W, H * 0.55);
+        grad.addColorStop(0, 'transparent');
+        grad.addColorStop(0.3, 'rgba(0,255,65,0.06)');
+        grad.addColorStop(0.5, 'rgba(0,255,65,0.12)');
+        grad.addColorStop(0.7, 'rgba(0,255,65,0.06)');
+        grad.addColorStop(1, 'transparent');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, H * 0.54, W, 2);
+
+        /* particles + connections */
+        particles.forEach(p => {
+            p.x += p.vx; p.y += p.vy;
+            if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+            if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(0,255,65,${p.alpha})`;
+            ctx.fill();
+        });
+
+        /* draw connections */
+        for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 120) {
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.strokeStyle = `rgba(0,255,65,${0.06 * (1 - dist / 120)})`;
+                    ctx.lineWidth = 0.5;
+                    ctx.stroke();
+                }
+            }
+        }
+
+        /* pulsing center glow */
+        const pulse = 0.04 + 0.02 * Math.sin(t * 0.02);
+        const radGrad = ctx.createRadialGradient(W/2, H/2, 0, W/2, H/2, W * 0.4);
+        radGrad.addColorStop(0, `rgba(0,255,65,${pulse})`);
+        radGrad.addColorStop(1, 'transparent');
+        ctx.fillStyle = radGrad;
+        ctx.fillRect(0, 0, W, H);
+
+        requestAnimationFrame(draw);
+    }
+    draw();
+}
+
+/* ── Polybar live stats simulation ── */
+function initPolybar() {
+    const cpuBar = document.getElementById('cpu-bar');
+    const cpuVal = document.getElementById('cpu-val');
+    const memBar = document.getElementById('mem-bar');
+    const memVal = document.getElementById('mem-val');
+    const netVal = document.getElementById('net-val');
+    const pbClock = document.getElementById('polybar-clock');
+    const uptimeEl = document.getElementById('uptime-val');
+    const startTime = Date.now();
+
+    function update() {
+        const now = new Date();
+        if (pbClock) pbClock.textContent = now.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',second:'2-digit'});
+
+        /* simulate fluctuating stats */
+        const cpu = Math.floor(20 + Math.random() * 60);
+        const mem = Math.floor(45 + Math.random() * 30);
+        const nets = (Math.random() * 5).toFixed(1);
+        if (cpuBar) cpuBar.style.width = cpu + '%';
+        if (cpuVal) cpuVal.textContent = cpu + '%';
+        if (memBar) memBar.style.width = mem + '%';
+        if (memVal) memVal.textContent = mem + '%';
+        if (netVal) netVal.textContent = nets + 'MB/s';
+
+        /* uptime */
+        const elapsed = Math.floor((Date.now() - startTime) / 1000);
+        const h = Math.floor(elapsed / 3600);
+        const m = Math.floor((elapsed % 3600) / 60);
+        if (uptimeEl) uptimeEl.textContent = `${h}h ${m}m`;
+    }
+    update();
+    setInterval(update, 2000);
+}
+
+/* ── Build dock pinned icons ── */
+function initDock() {
+    const dockPins = document.getElementById('dock-pins');
+    if (!dockPins) return;
+    const pinned = [
+        { appId: 'terminal', label: 'terminal' },
+        { appId: 'projects', label: 'projects' },
+        { appId: 'skills', label: 'skills' },
+        { appId: 'resume', label: 'resume' },
+        { appId: 'contact', label: 'contact' },
+    ];
+    pinned.forEach((p, i) => {
+        if (i === 0) {
+            const sep = document.createElement('div');
+            sep.className = 'dock-separator';
+            dockPins.appendChild(sep);
+        }
+        const icon = document.createElement('div');
+        icon.className = 'dock-icon';
+        icon.title = p.label;
+        icon.dataset.app = p.appId;
+        icon.innerHTML = `<img src="" alt="${p.label}"><span class="dock-label">${p.label}</span>`;
+        icon.addEventListener('click', () => {
+            if (window.WindowManager) window.WindowManager.openApp(p.appId);
+        });
+        dockPins.appendChild(icon);
+    });
+}
+
+/* ── Update polybar active app title ── */
+function updatePolybarApp(title) {
+    const el = document.getElementById('polybar-active-app');
+    if (el) el.textContent = title || '~';
+}
+
+/* ── Init everything after desktop loads ── */
+document.addEventListener('DOMContentLoaded', () => {
+    initDesktopCanvas();
+    initPolybar();
+    initDock();
+});
+
+/* Patch WindowManager to update polybar active app */
+const _origFocus = window.WindowManager && window.WindowManager.focusWindow;
+document.addEventListener('desktopReady', () => {
+    if (window.WindowManager) {
+        const orig = window.WindowManager.focusWindow.bind(window.WindowManager);
+        window.WindowManager.focusWindow = function(id) {
+            orig(id);
+            const win = this.windows.find(w => w.id === id);
+            if (win && window.APPS) {
+                const app = window.APPS[win.appId];
+                updatePolybarApp(app ? app.title : '~');
+            }
+            /* update dock icon images after APPS loaded */
+            document.querySelectorAll('#dock-pins .dock-icon').forEach(el => {
+                const appId = el.dataset.app;
+                const img = el.querySelector('img');
+                if (img && !img.src.includes('svg') && window.getIconSvg && window.APPS && window.APPS[appId]) {
+                    img.src = window.getIconSvg(window.APPS[appId].icon);
+                }
             });
-        }
-        setInterval(draw, 50);
-    })();
-    </script>
+        };
+    }
+});
 
-    <script src="js/system.js"></script>
-    <script src="js/window.js"></script>
-    <script src="js/desktop.js"></script>
-    <script src="js/taskbar.js"></script>
+/* Fill dock icon images once APPS is ready */
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        document.querySelectorAll('#dock-pins .dock-icon').forEach(el => {
+            const appId = el.dataset.app;
+            const img = el.querySelector('img');
+            if (img && window.getIconSvg && window.APPS && window.APPS[appId]) {
+                img.src = window.getIconSvg(window.APPS[appId].icon);
+            }
+        });
+    }, 300);
+});
+</script>
+
+<script src="js/system.js"></script>
+<script src="js/window.js"></script>
+<script src="js/desktop.js"></script>
+<script src="js/taskbar.js"></script>
 </body>
 </html>
