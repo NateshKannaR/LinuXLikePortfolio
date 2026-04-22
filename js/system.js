@@ -1,296 +1,154 @@
 // Create an SVG string based icon placeholder generator since we don't have binary assets
 function getIconSvg(type) {
     const xmlns = 'xmlns="http://www.w3.org/2000/svg"';
-    
-    // Complex, multi-layered SVGs to mimic Windows 7 3D/Aero look
     const icons = {
         'computer': `<svg ${xmlns} viewBox="0 0 64 64">
-            <defs>
-                <linearGradient id="monitor" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#e6e8eb" />
-                    <stop offset="100%" stop-color="#aeb5bc" />
-                </linearGradient>
-                <linearGradient id="screen" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#2d7dd2" />
-                    <stop offset="100%" stop-color="#0a192f" />
-                </linearGradient>
-                <linearGradient id="stand" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#c1c7ce" />
-                    <stop offset="100%" stop-color="#707982" />
-                </linearGradient>
-            </defs>
-            <rect x="8" y="12" width="48" height="34" rx="4" fill="url(#monitor)" stroke="#555" stroke-width="1.5" />
-            <rect x="12" y="16" width="40" height="26" fill="url(#screen)" />
-            <path d="M 28 46 L 36 46 L 38 56 L 26 56 Z" fill="url(#stand)" />
-            <ellipse cx="32" cy="56" rx="16" ry="3" fill="url(#stand)" stroke="#555" stroke-width="1" />
-            <!-- Glare effect -->
-            <polygon points="12,16 30,16 16,42 12,42" fill="rgba(255,255,255,0.15)" />
-        </svg>`,
+          <defs>
+            <linearGradient id="cg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00ff41"/><stop offset="100%" stop-color="#006614"/></linearGradient>
+            <filter id="cglow"><feGaussianBlur stdDeviation="1.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <rect x="6" y="8" width="52" height="36" rx="4" fill="#0a0f0a" stroke="#00ff41" stroke-width="1.5" filter="url(#cglow)"/>
+          <rect x="10" y="12" width="44" height="28" rx="2" fill="#020f02"/>
+          <text x="14" y="22" font-family="monospace" font-size="7" fill="#00ff41" opacity="0.9">natesh@arch:~$</text>
+          <text x="14" y="31" font-family="monospace" font-size="6" fill="#00cc33" opacity="0.7">ls -la /home</text>
+          <rect x="14" y="33" width="6" height="5" rx="1" fill="#00ff41" opacity="0.8"/>
+          <rect x="26" y="44" width="12" height="4" rx="1" fill="#00ff41" opacity="0.5"/>
+          <rect x="20" y="48" width="24" height="2" rx="1" fill="#00ff41" opacity="0.3"/>
+          <circle cx="32" cy="56" r="3" fill="none" stroke="#00ff41" stroke-width="1" opacity="0.6"/>
+        </svg>`
         
         'folder': `<svg ${xmlns} viewBox="0 0 64 64">
-            <defs>
-                <linearGradient id="back-folder" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#e6b141" />
-                    <stop offset="100%" stop-color="#c99120" />
-                </linearGradient>
-                <linearGradient id="front-folder" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#fadd78" />
-                    <stop offset="100%" stop-color="#eaaa2d" />
-                </linearGradient>
-                <filter id="shadow">
-                    <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="rgba(0,0,0,0.3)"/>
-                </filter>
-            </defs>
-            <!-- Back flap -->
-            <path d="M 8 16 L 24 16 L 28 22 L 56 22 C 58 22 60 24 60 26 L 60 48 C 60 50 58 52 56 52 L 8 52 C 6 52 4 50 4 48 L 4 20 C 4 18 6 16 8 16 Z" fill="url(#back-folder)" stroke="#a67b21" stroke-width="1" />
-            <!-- Paper inside -->
-            <rect x="12" y="24" width="40" height="20" fill="#fff" opacity="0.8" />
-            <!-- Front flap -->
-            <path d="M 4 52 L 12 28 C 12.5 26.5 14 25.5 15.5 25.5 L 61 25.5 C 63 25.5 63.5 27.5 62.5 29 L 56 52 Z" fill="url(#front-folder)" filter="url(#shadow)" stroke="#c48f21" stroke-width="1" />
+          <defs><filter id="fglow"><feGaussianBlur stdDeviation="1.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+          <rect x="4" y="20" width="56" height="36" rx="4" fill="#020f02" stroke="#00ff41" stroke-width="1.2" filter="url(#fglow)"/>
+          <path d="M4 20 L4 16 Q4 12 8 12 L26 12 L30 20 Z" fill="#020f02" stroke="#00ff41" stroke-width="1.2"/>
+          <line x1="12" y1="30" x2="52" y2="30" stroke="#00ff41" stroke-width="0.8" opacity="0.4"/>
+          <line x1="12" y1="37" x2="44" y2="37" stroke="#00ff41" stroke-width="0.8" opacity="0.3"/>
+          <line x1="12" y1="44" x2="38" y2="44" stroke="#00ff41" stroke-width="0.8" opacity="0.2"/>
+          <text x="8" y="28" font-family="monospace" font-size="6" fill="#00ff41" opacity="0.7">drwxr-xr-x</text>
         </svg>`,
 
         'private_folder': `<svg ${xmlns} viewBox="0 0 64 64">
-            <defs>
-                <linearGradient id="back-pfolder" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#e6b141" />
-                    <stop offset="100%" stop-color="#c99120" />
-                </linearGradient>
-                <linearGradient id="front-pfolder" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#fadd78" />
-                    <stop offset="100%" stop-color="#eaaa2d" />
-                </linearGradient>
-                <filter id="shadow-p">
-                    <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="rgba(0,0,0,0.3)"/>
-                </filter>
-            </defs>
-            <!-- Back flap -->
-            <path d="M 8 16 L 24 16 L 28 22 L 56 22 C 58 22 60 24 60 26 L 60 48 C 60 50 58 52 56 52 L 8 52 C 6 52 4 50 4 48 L 4 20 C 4 18 6 16 8 16 Z" fill="url(#back-pfolder)" stroke="#a67b21" stroke-width="1" />
-            <!-- Paper inside -->
-            <rect x="12" y="24" width="40" height="20" fill="#fff" opacity="0.8" />
-            <!-- Front flap -->
-            <path d="M 4 52 L 12 28 C 12.5 26.5 14 25.5 15.5 25.5 L 61 25.5 C 63 25.5 63.5 27.5 62.5 29 L 56 52 Z" fill="url(#front-pfolder)" filter="url(#shadow-p)" stroke="#c48f21" stroke-width="1" />
-            <!-- Deny overlay badge -->
-            <circle cx="48" cy="44" r="10" fill="none" stroke="#e74c3c" stroke-width="4" filter="url(#shadow-p)" />
-            <line x1="41" y1="37" x2="55" y2="51" stroke="#e74c3c" stroke-width="4" stroke-linecap="round" />
+          <defs><filter id="pfglow"><feGaussianBlur stdDeviation="1.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+          <rect x="4" y="20" width="56" height="36" rx="4" fill="#0f0202" stroke="#ff4444" stroke-width="1.2" filter="url(#pfglow)"/>
+          <path d="M4 20 L4 16 Q4 12 8 12 L26 12 L30 20 Z" fill="#0f0202" stroke="#ff4444" stroke-width="1.2"/>
+          <rect x="24" y="10" width="16" height="12" rx="3" fill="none" stroke="#ff4444" stroke-width="1.5"/>
+          <rect x="22" y="18" width="20" height="14" rx="2" fill="#1a0000" stroke="#ff4444" stroke-width="1.2"/>
+          <circle cx="32" cy="25" r="2.5" fill="#ff4444" opacity="0.8"/>
+          <line x1="32" y1="25" x2="32" y2="29" stroke="#ff4444" stroke-width="1.5"/>
+          <text x="8" y="44" font-family="monospace" font-size="6" fill="#ff4444" opacity="0.7">drwx------</text>
         </svg>`,
         
         'terminal': `<svg ${xmlns} viewBox="0 0 64 64">
-            <defs>
-                <linearGradient id="term-bg" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#1e1e1e" />
-                    <stop offset="100%" stop-color="#000000" />
-                </linearGradient>
-                <linearGradient id="term-bar" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#f0f0f0" />
-                    <stop offset="100%" stop-color="#b0b0b0" />
-                </linearGradient>
-                <filter id="term-shadow">
-                    <feDropShadow dx="1" dy="3" stdDeviation="3" flood-color="rgba(0,0,0,0.5)"/>
-                </filter>
-            </defs>
-            <rect x="6" y="10" width="52" height="44" rx="3" fill="url(#term-bg)" filter="url(#term-shadow)" stroke="#333" stroke-width="2" />
-            <!-- Title bar -->
-            <path d="M 6 13 C 6 11.5 7.5 10 9 10 L 55 10 C 56.5 10 58 11.5 58 13 L 58 20 L 6 20 Z" fill="url(#term-bar)" />
-            <!-- Command prompt symbol -->
-            <polyline points="14,28 22,34 14,40" fill="none" stroke="#0f0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-            <line x1="26" y1="40" x2="36" y2="40" stroke="#0f0" stroke-width="3" />
-            <!-- Red close button -->
-            <circle cx="52" cy="15" r="3" fill="#e04040" />
+          <defs><filter id="tglow"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+          <rect x="4" y="8" width="56" height="48" rx="6" fill="#050f05" stroke="#00ff41" stroke-width="1.5" filter="url(#tglow)"/>
+          <rect x="4" y="8" width="56" height="14" rx="6" fill="#0a1a0a"/>
+          <circle cx="14" cy="15" r="3" fill="#ff5f57"/>
+          <circle cx="24" cy="15" r="3" fill="#f5a623"/>
+          <circle cx="34" cy="15" r="3" fill="#27c93f"/>
+          <text x="10" y="34" font-family="monospace" font-size="7" fill="#00ff41">$ whoami</text>
+          <text x="10" y="43" font-family="monospace" font-size="7" fill="#00cc33" opacity="0.8">natesh</text>
+          <rect x="10" y="46" width="5" height="7" rx="1" fill="#00ff41" opacity="0.9"/>
         </svg>`,
         
         'document': `<svg ${xmlns} viewBox="0 0 64 64">
-            <defs>
-                <linearGradient id="doc-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#ffffff" />
-                    <stop offset="100%" stop-color="#e6e6e6" />
-                </linearGradient>
-                <linearGradient id="doc-fold" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#f0f0f0" />
-                    <stop offset="100%" stop-color="#d4d4d4" />
-                </linearGradient>
-                <filter id="doc-shadow">
-                    <feDropShadow dx="1" dy="3" stdDeviation="3" flood-color="rgba(0,0,0,0.4)"/>
-                </filter>
-            </defs>
-            <path d="M 16 8 L 38 8 L 48 18 L 48 56 C 48 57.5 46.5 59 45 59 L 16 59 C 14.5 59 13 57.5 13 56 L 13 11 C 13 9.5 14.5 8 16 8 Z" fill="url(#doc-bg)" filter="url(#doc-shadow)" stroke="#ccc" stroke-width="1.5" />
-            <!-- Fold -->
-            <path d="M 38 8 L 38 18 L 48 18 Z" fill="url(#doc-fold)" stroke="#ccc" stroke-width="1" stroke-linejoin="round" />
-            <!-- Lines -->
-            <line x1="22" y1="28" x2="38" y2="28" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" />
-            <line x1="22" y1="36" x2="40" y2="36" stroke="#a0a0a0" stroke-width="2" stroke-linecap="round" />
-            <line x1="22" y1="44" x2="40" y2="44" stroke="#a0a0a0" stroke-width="2" stroke-linecap="round" />
-            <line x1="22" y1="52" x2="34" y2="52" stroke="#a0a0a0" stroke-width="2" stroke-linecap="round" />
+          <defs><filter id="dglow"><feGaussianBlur stdDeviation="1.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+          <rect x="10" y="6" width="38" height="48" rx="3" fill="#050f05" stroke="#00ff41" stroke-width="1.2" filter="url(#dglow)"/>
+          <path d="M34 6 L48 20 L34 20 Z" fill="#020802" stroke="#00ff41" stroke-width="1"/>
+          <path d="M34 6 L48 20 L34 20" fill="#0a1a0a"/>
+          <line x1="16" y1="28" x2="42" y2="28" stroke="#00ff41" stroke-width="1" opacity="0.8"/>
+          <line x1="16" y1="34" x2="38" y2="34" stroke="#00ff41" stroke-width="1" opacity="0.5"/>
+          <line x1="16" y1="40" x2="40" y2="40" stroke="#00ff41" stroke-width="1" opacity="0.4"/>
+          <line x1="16" y1="46" x2="30" y2="46" stroke="#00ff41" stroke-width="1" opacity="0.3"/>
+          <text x="13" y="22" font-family="monospace" font-size="5.5" fill="#00ff41" opacity="0.6">resume.pdf</text>
         </svg>`,
         
         'contact': `<svg ${xmlns} viewBox="0 0 64 64">
-            <defs>
-                <linearGradient id="phone-grad" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#4ade80" />
-                    <stop offset="100%" stop-color="#16a34a" />
-                </linearGradient>
-                <filter id="phone-shadow"><feDropShadow dx="1" dy="4" stdDeviation="3" flood-color="rgba(0,0,0,0.4)"/></filter>
-                <filter id="icon-shadow"><feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="rgba(0,0,0,0.2)"/></filter>
-            </defs>
-            <g transform="translate(4.8, 4.8) scale(0.85)">
-                <circle cx="32" cy="32" r="26" fill="url(#phone-grad)" filter="url(#phone-shadow)" stroke="#15803d" stroke-width="1.5" />
-                
-                <!-- Clean telephone receiver -->
-                <path d="M 44.4 36.2 C 42.7 34.5 40.8 34.5 39.1 36.2 L 36.7 38.6 C 30.9 36.1 26.2 31.4 23.6 25.5 L 26.0 23.1 C 27.7 21.4 27.7 19.5 26.0 17.8 L 22.3 14.1 C 20.6 12.4 18.7 12.4 17.0 14.1 L 14.5 16.6 C 13.5 17.8 13.0 19.4 13.2 21.0 C 14.4 28.5 18.6 35.7 24.3 41.4 C 30.0 47.1 37.1 51.3 44.7 52.4 C 46.3 52.7 47.8 52.1 48.9 51.1 L 51.4 48.6 C 53.1 46.9 53.1 45.0 51.4 43.3 L 44.4 36.2 Z" fill="#ffffff" filter="url(#icon-shadow)" />
-            </g>
+          <defs><filter id="contglow"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+          <circle cx="32" cy="32" r="26" fill="#050f05" stroke="#00ff41" stroke-width="1.5" filter="url(#contglow)"/>
+          <circle cx="32" cy="24" r="8" fill="none" stroke="#00ff41" stroke-width="1.5"/>
+          <path d="M16 50 Q16 38 32 38 Q48 38 48 50" fill="none" stroke="#00ff41" stroke-width="1.5"/>
+          <circle cx="32" cy="24" r="3" fill="#00ff41" opacity="0.6"/>
         </svg>`,
         
         'github': `<svg ${xmlns} viewBox="0 0 64 64">
-            <defs>
-                <linearGradient id="git-bg" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#4a4a4a" />
-                    <stop offset="100%" stop-color="#141414" />
-                </linearGradient>
-                <filter id="git-shadow"><feDropShadow dx="1" dy="3" stdDeviation="3" flood-color="rgba(0,0,0,0.5)"/></filter>
-            </defs>
-            <circle cx="32" cy="32" r="26" fill="url(#git-bg)" filter="url(#git-shadow)" stroke="#555" stroke-width="1" />
-            <path d="M32 12C20.95 12 12 20.95 12 32c0 8.84 5.73 16.34 13.68 18.99.99.19 1.37-.44 1.37-.97v-3.41c-5.56 1.21-6.74-2.68-6.74-2.68-.91-2.31-2.23-2.92-2.23-2.92-1.82-1.25.13-1.23.13-1.23 2.02.15 3.09 2.08 3.09 2.08 1.79 3.08 4.7 2.19 5.85 1.67.18-1.3.7-2.19 1.28-2.69-4.44-.5-9.11-2.22-9.11-9.87 0-2.18.78-3.96 2.06-5.36-.21-.5-.89-2.54.19-5.28 0 0 1.68-.54 5.5 2.05A19.1 19.1 0 0132 23.05c1.7.01 3.42.23 5.01.68 3.81-2.59 5.49-2.05 5.49-2.05 1.09 2.74.41 4.78.2 5.28 1.28 1.4 2.06 3.18 2.06 5.36 0 7.67-4.68 9.36-9.14 9.85.72.62 1.36 1.84 1.36 3.71v5.51c0 .54.36 1.17 1.38.97C46.28 48.33 52 40.83 52 32 52 20.95 43.05 12 32 12z" fill="#fff" />
+          <defs><filter id="gglow"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+          <circle cx="32" cy="32" r="26" fill="#050f05" stroke="#00ff41" stroke-width="1.5" filter="url(#gglow)"/>
+          <path d="M32 14C22.06 14 14 22.06 14 32c0 7.97 5.17 14.73 12.34 17.12.9.17 1.23-.39 1.23-.87v-3.07c-5.01 1.09-6.07-2.41-6.07-2.41-.82-2.08-2-2.63-2-2.63-1.64-1.12.12-1.1.12-1.1 1.82.13 2.78 1.87 2.78 1.87 1.61 2.77 4.23 1.97 5.26 1.5.16-1.17.63-1.97 1.15-2.42-4-.45-8.2-2-8.2-8.88 0-1.96.7-3.56 1.85-4.82-.19-.45-.8-2.28.17-4.75 0 0 1.51-.48 4.95 1.84A17.2 17.2 0 0132 20.75c1.53.01 3.07.21 4.51.61 3.43-2.33 4.94-1.84 4.94-1.84.97 2.47.36 4.3.18 4.75 1.15 1.26 1.85 2.86 1.85 4.82 0 6.9-4.21 8.42-8.22 8.86.65.56 1.22 1.66 1.22 3.34v4.96c0 .48.32 1.05 1.24.87C44.84 46.72 50 39.96 50 32c0-9.94-8.06-18-18-18z" fill="#00ff41"/>
         </svg>`,
         
         'recycle': `<svg ${xmlns} viewBox="0 0 64 64">
-            <defs>
-                <linearGradient id="bin-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#b6cbe0" />
-                    <stop offset="50%" stop-color="#e6f0fa" />
-                    <stop offset="100%" stop-color="#a4b9cf" />
-                </linearGradient>
-                <linearGradient id="lid" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#f5f8fa" />
-                    <stop offset="100%" stop-color="#93a8c0" />
-                </linearGradient>
-                <filter id="bin-shadow"><feDropShadow dx="2" dy="5" stdDeviation="4" flood-color="rgba(0,0,0,0.3)"/></filter>
-            </defs>
-            <!-- Body -->
-            <path d="M 18 24 L 46 24 L 42 54 L 22 54 Z" fill="url(#bin-gradient)" filter="url(#bin-shadow)" stroke="#748b9f" stroke-width="1.5" />
-            <!-- Lid -->
-            <ellipse cx="32" cy="24" rx="16" ry="4" fill="url(#lid)" stroke="#748b9f" stroke-width="1.5" />
-            <!-- Vertical Lines -->
-            <line x1="24" y1="30" x2="26" y2="50" stroke="#8ca3ba" stroke-width="1.5" stroke-linecap="round" />
-            <line x1="32" y1="30" x2="32" y2="50" stroke="#8ca3ba" stroke-width="1.5" stroke-linecap="round" />
-            <line x1="40" y1="30" x2="38" y2="50" stroke="#8ca3ba" stroke-width="1.5" stroke-linecap="round" />
-            <!-- Recycling symbol outline (simplified) -->
-            <path d="M 26 38 L 30 32 L 34 38 Z" fill="none" stroke="#68ae5e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          <defs><filter id="rglow"><feGaussianBlur stdDeviation="1.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+          <rect x="18" y="22" width="28" height="32" rx="3" fill="#050f05" stroke="#ff4444" stroke-width="1.2" filter="url(#rglow)"/>
+          <rect x="12" y="18" width="40" height="6" rx="2" fill="#0f0202" stroke="#ff4444" stroke-width="1"/>
+          <rect x="24" y="12" width="16" height="6" rx="2" fill="#0f0202" stroke="#ff4444" stroke-width="1"/>
+          <line x1="24" y1="30" x2="24" y2="46" stroke="#ff4444" stroke-width="1" opacity="0.6"/>
+          <line x1="32" y1="30" x2="32" y2="46" stroke="#ff4444" stroke-width="1" opacity="0.6"/>
+          <line x1="40" y1="30" x2="40" y2="46" stroke="#ff4444" stroke-width="1" opacity="0.6"/>
         </svg>`,
         
         'skills': `<svg ${xmlns} viewBox="0 0 64 64">
-            <!-- Background base -->
-            <rect x="8" y="10" width="48" height="44" rx="4" fill="#ffffff" stroke="#c0c0c0" stroke-width="2" />
-            <!-- Colorful left accent bar -->
-            <rect x="8" y="10" width="10" height="44" rx="4" fill="#ff7f50" />
-            <!-- Graph bars -->
-            <rect x="24" y="38" width="6" height="10" fill="#4caf50" rx="1" />
-            <rect x="34" y="28" width="6" height="20" fill="#2196f3" rx="1" />
-            <rect x="44" y="20" width="6" height="28" fill="#9c27b0" rx="1" />
-            <!-- Base line -->
-            <line x1="22" y1="48" x2="52" y2="48" stroke="#888" stroke-width="2" stroke-linecap="round" />
-            <!-- Sparkle/Star -->
-            <path d="M48 8 L50 12 L54 14 L50 16 L48 20 L46 16 L42 14 L46 12 Z" fill="#ffca28"/>
+          <defs><filter id="skglow"><feGaussianBlur stdDeviation="1.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+          <rect x="4" y="4" width="56" height="56" rx="6" fill="#050f05" stroke="#00ff41" stroke-width="1.2" filter="url(#skglow)"/>
+          <rect x="12" y="42" width="8" height="14" rx="1" fill="#00ff41" opacity="0.9"/>
+          <rect x="24" y="32" width="8" height="24" rx="1" fill="#00cc33" opacity="0.8"/>
+          <rect x="36" y="22" width="8" height="34" rx="1" fill="#00ff41" opacity="0.7"/>
+          <rect x="48" y="14" width="8" height="42" rx="1" fill="#00ff41" opacity="0.6"/>
+          <line x1="8" y1="56" x2="58" y2="56" stroke="#00ff41" stroke-width="1" opacity="0.4"/>
+          <text x="8" y="14" font-family="monospace" font-size="6" fill="#00ff41" opacity="0.6">skills.sh</text>
         </svg>`,
 
         'calculator': `<svg ${xmlns} viewBox="0 0 64 64">
-            <defs>
-                <linearGradient id="calc-body" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#f5f8fc" />
-                    <stop offset="100%" stop-color="#c3cfdd" />
-                </linearGradient>
-                <linearGradient id="calc-screen" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#d8f0cc" />
-                    <stop offset="100%" stop-color="#a6c79a" />
-                </linearGradient>
-                <linearGradient id="calc-accent" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#4b93da" />
-                    <stop offset="100%" stop-color="#2c6fb2" />
-                </linearGradient>
-            </defs>
-            <rect x="12" y="5" width="40" height="54" rx="5" fill="url(#calc-body)" stroke="#6c7787" stroke-width="1.6" />
-            <rect x="17" y="11" width="30" height="12" rx="2" fill="url(#calc-screen)" stroke="#7f9973" stroke-width="1" />
-            <rect x="20" y="15" width="24" height="4" rx="1" fill="#3d5d31" opacity="0.75" />
-            <g fill="#eef3f8" stroke="#8192a8" stroke-width="0.7">
-                <rect x="17" y="28" width="8" height="7" rx="1.4" />
-                <rect x="28" y="28" width="8" height="7" rx="1.4" />
-                <rect x="39" y="28" width="8" height="7" rx="1.4" />
-                <rect x="17" y="38" width="8" height="7" rx="1.4" />
-                <rect x="28" y="38" width="8" height="7" rx="1.4" />
-                <rect x="39" y="38" width="8" height="7" rx="1.4" />
-                <rect x="17" y="48" width="8" height="7" rx="1.4" />
-                <rect x="28" y="48" width="8" height="7" rx="1.4" />
-            </g>
-            <rect x="39" y="48" width="8" height="7" rx="1.4" fill="url(#calc-accent)" stroke="#1f5f9d" stroke-width="0.8" />
+          <defs><filter id="calcglow"><feGaussianBlur stdDeviation="1.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+          <rect x="10" y="4" width="44" height="56" rx="5" fill="#050f05" stroke="#00ff41" stroke-width="1.2" filter="url(#calcglow)"/>
+          <rect x="14" y="10" width="36" height="14" rx="2" fill="#020802" stroke="#00ff41" stroke-width="0.8"/>
+          <text x="38" y="21" font-family="monospace" font-size="9" fill="#00ff41" text-anchor="end">42</text>
+          <g fill="#020802" stroke="#00ff41" stroke-width="0.8">
+            <rect x="14" y="30" width="9" height="7" rx="1.5"/><rect x="27" y="30" width="9" height="7" rx="1.5"/><rect x="40" y="30" width="9" height="7" rx="1.5"/>
+            <rect x="14" y="40" width="9" height="7" rx="1.5"/><rect x="27" y="40" width="9" height="7" rx="1.5"/><rect x="40" y="40" width="9" height="7" rx="1.5"/>
+            <rect x="14" y="50" width="22" height="7" rx="1.5"/>
+          </g>
+          <rect x="40" y="50" width="9" height="7" rx="1.5" fill="#00ff41" opacity="0.8"/>
         </svg>`,
 
         'notepad': `<svg ${xmlns} viewBox="0 0 64 64">
-            <defs>
-                <linearGradient id="pad-cover" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#f6fbff" />
-                    <stop offset="100%" stop-color="#d9e7f6" />
-                </linearGradient>
-                <linearGradient id="pad-top" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#74b1f0" />
-                    <stop offset="100%" stop-color="#3d83ca" />
-                </linearGradient>
-            </defs>
-            <rect x="10" y="8" width="44" height="50" rx="4" fill="url(#pad-cover)" stroke="#7e9ebf" stroke-width="1.6" />
-            <rect x="10" y="8" width="44" height="10" rx="4" fill="url(#pad-top)" />
-            <g fill="#f0f7ff" stroke="#2d6fae" stroke-width="0.8">
-                <circle cx="18" cy="13" r="1.6" />
-                <circle cx="26" cy="13" r="1.6" />
-                <circle cx="34" cy="13" r="1.6" />
-                <circle cx="42" cy="13" r="1.6" />
-            </g>
-            <line x1="18" y1="24" x2="46" y2="24" stroke="#9db6d1" stroke-width="1.3" />
-            <line x1="18" y1="30" x2="46" y2="30" stroke="#9db6d1" stroke-width="1.3" />
-            <line x1="18" y1="36" x2="46" y2="36" stroke="#9db6d1" stroke-width="1.3" />
-            <line x1="18" y1="42" x2="46" y2="42" stroke="#9db6d1" stroke-width="1.3" />
-            <line x1="18" y1="48" x2="38" y2="48" stroke="#9db6d1" stroke-width="1.3" />
+          <defs><filter id="nglow"><feGaussianBlur stdDeviation="1.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+          <rect x="8" y="6" width="48" height="52" rx="4" fill="#050f05" stroke="#00ff41" stroke-width="1.2" filter="url(#nglow)"/>
+          <rect x="8" y="6" width="48" height="10" rx="4" fill="#0a1a0a" stroke="#00ff41" stroke-width="1.2"/>
+          <circle cx="18" cy="11" r="2" fill="#ff5f57"/>
+          <circle cx="26" cy="11" r="2" fill="#f5a623"/>
+          <circle cx="34" cy="11" r="2" fill="#27c93f"/>
+          <text x="12" y="26" font-family="monospace" font-size="5.5" fill="#00ff41" opacity="0.8">nano ~/notes.md</text>
+          <line x1="12" y1="30" x2="52" y2="30" stroke="#00ff41" stroke-width="0.6" opacity="0.3"/>
+          <line x1="12" y1="36" x2="48" y2="36" stroke="#00ff41" stroke-width="0.6" opacity="0.25"/>
+          <line x1="12" y1="42" x2="44" y2="42" stroke="#00ff41" stroke-width="0.6" opacity="0.2"/>
+          <line x1="12" y1="48" x2="36" y2="48" stroke="#00ff41" stroke-width="0.6" opacity="0.15"/>
         </svg>`,
 
         'paint': `<svg ${xmlns} viewBox="0 0 64 64">
-            <defs>
-                <linearGradient id="palette" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#d4aa70" />
-                    <stop offset="100%" stop-color="#996c33" />
-                </linearGradient>
-                <filter id="paint-shadow"><feDropShadow dx="1" dy="3" stdDeviation="2" flood-color="rgba(0,0,0,0.4)"/></filter>
-            </defs>
-            <path d="M 32 10 C 18 10 10 24 14 38 C 16 46 24 54 36 54 C 52 54 60 40 54 24 C 48 10 40 10 32 10 Z" fill="url(#palette)" filter="url(#paint-shadow)" stroke="#8b5a2b" stroke-width="1.5" />
-            <circle cx="22" cy="26" r="4" fill="#ffffff" /> <!-- Thumb hole -->
-            <circle cx="32" cy="20" r="4.5" fill="#e74c3c" />
-            <circle cx="42" cy="26" r="4" fill="#3498db" />
-            <circle cx="44" cy="38" r="4.5" fill="#f1c40f" />
-            <circle cx="34" cy="44" r="4" fill="#2ecc71" />
-            <!-- Paintbrush -->
-            <path d="M 12 52 L 24 40 Z" stroke="#bdc3c7" stroke-width="4" stroke-linecap="round" filter="url(#paint-shadow)" />
-            <path d="M 22 42 L 30 34" stroke="#e67e22" stroke-width="3" stroke-linecap="round" />
-            <path d="M 28 36 L 36 28 C 36 28 40 32 38 34 L 30 42 Z" fill="#ffe0b2" stroke="#d35400" stroke-width="1" />
-            <path d="M 36 28 C 34 24 38 22 40 20 C 44 26 42 30 38 34 C 40 32 38 28 36 28 Z" fill="#c0392b" />
+          <defs><filter id="paintglow"><feGaussianBlur stdDeviation="1.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+          <rect x="4" y="4" width="56" height="56" rx="6" fill="#050f05" stroke="#00ff41" stroke-width="1.2" filter="url(#paintglow)"/>
+          <circle cx="20" cy="20" r="6" fill="none" stroke="#ff5f57" stroke-width="2"/>
+          <circle cx="32" cy="16" r="6" fill="none" stroke="#f5a623" stroke-width="2"/>
+          <circle cx="44" cy="20" r="6" fill="none" stroke="#27c93f" stroke-width="2"/>
+          <circle cx="44" cy="34" r="6" fill="none" stroke="#1793d1" stroke-width="2"/>
+          <circle cx="32" cy="40" r="6" fill="none" stroke="#b44be1" stroke-width="2"/>
+          <circle cx="20" cy="34" r="6" fill="none" stroke="#00ff41" stroke-width="2"/>
+          <line x1="38" y1="42" x2="56" y2="58" stroke="#00ff41" stroke-width="3" stroke-linecap="round"/>
+          <rect x="34" y="38" width="8" height="6" rx="1" fill="#0a1a0a" stroke="#00ff41" stroke-width="1"/>
         </svg>`,
 
         'taskmanager': `<svg ${xmlns} viewBox="0 0 64 64">
-            <defs>
-                <linearGradient id="tm-monitor" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#f0f0f0" />
-                    <stop offset="100%" stop-color="#a0a0a0" />
-                </linearGradient>
-                <linearGradient id="tm-screen" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#111111" />
-                    <stop offset="100%" stop-color="#333333" />
-                </linearGradient>
-            </defs>
-            <rect x="6" y="12" width="52" height="36" rx="3" fill="url(#tm-monitor)" stroke="#555" stroke-width="2" />
-            <rect x="10" y="16" width="44" height="28" fill="url(#tm-screen)" stroke="#000" stroke-width="1" />
-            <path d="M 24 48 L 40 48 L 42 56 L 22 56 Z" fill="#888" />
-            <!-- Graph in screen -->
-            <path d="M 10 44 L 14 36 L 20 40 L 26 24 L 32 32 L 38 20 L 44 28 L 50 16 L 54 44 Z" fill="rgba(50,205,50,0.3)" stroke="#32cd32" stroke-width="1.5" />
-            <line x1="10" y1="36" x2="54" y2="36" stroke="#226622" stroke-width="0.5" />
-            <line x1="10" y1="26" x2="54" y2="26" stroke="#226622" stroke-width="0.5" />
-            <rect x="8" y="4" width="24" height="6" fill="#e0e0e0" stroke="#777" stroke-width="1" />
-            <circle cx="12" cy="7" r="1.5" fill="#e74c3c" />
-            <circle cx="16" cy="7" r="1.5" fill="#f1c40f" />
-            <circle cx="20" cy="7" r="1.5" fill="#2ecc71" />
+          <defs><filter id="htopglow"><feGaussianBlur stdDeviation="1.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+          <rect x="4" y="4" width="56" height="56" rx="6" fill="#050f05" stroke="#00ff41" stroke-width="1.2" filter="url(#htopglow)"/>
+          <text x="8" y="14" font-family="monospace" font-size="5.5" fill="#00ff41" opacity="0.7">htop - natesh@arch</text>
+          <rect x="8" y="17" width="48" height="1" fill="#00ff41" opacity="0.3"/>
+          <text x="8" y="25" font-family="monospace" font-size="4.5" fill="#00cc33">CPU[</text>
+          <rect x="22" y="21" width="28" height="4" rx="1" fill="#020802"/>
+          <rect x="22" y="21" width="18" height="4" rx="1" fill="#00ff41" opacity="0.8"/>
+          <text x="8" y="33" font-family="monospace" font-size="4.5" fill="#00cc33">MEM[</text>
+          <rect x="22" y="29" width="28" height="4" rx="1" fill="#020802"/>
+          <rect x="22" y="29" width="22" height="4" rx="1" fill="#1793d1" opacity="0.8"/>
+          <polyline points="8,56 14,48 20,52 26,40 32,44 38,36 44,42 50,30 56,56" fill="none" stroke="#00ff41" stroke-width="1.2" opacity="0.7"/>
         </svg>`
     };
     return `data:image/svg+xml,${encodeURIComponent(icons[type] || icons['folder'])}`;
